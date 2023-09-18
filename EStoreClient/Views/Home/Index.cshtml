@@ -1,0 +1,26 @@
+﻿@model DataAccess.Dtos.AuthenticationDto.LoginReadDto
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutLogin";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Index" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

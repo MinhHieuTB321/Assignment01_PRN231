@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DataAccess.Dtos.OrderDto.OrderReadDto>
+
+@{
+    ViewData["Title"] = "Order";
+    Layout = "_LayoutProfile";
+}
+
+<h1>Order</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Member)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Freight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member)
+            </td>
+            <td>
+                @item.OrderDate.ToShortDateString()
+            </td>
+            <td>
+                @item.RequiredDate!.Value.ToShortDateString()
+            </td>
+            <td>
+                @item.ShippedDate!.Value.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Freight) $
+            </td>
+            <td>
+                <a asp-action="OrderDetail" asp-route-id="@item.OrderId">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
